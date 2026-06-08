@@ -1,23 +1,22 @@
-# Student Performance Analysis Using Exploratory Data Analysis (EDA)
+# Student Performance Analysis & Visual Storytelling
 
 ## Deskripsi Proyek
 
-Proyek ini bertujuan untuk menganalisis faktor-faktor yang mempengaruhi performa akademik siswa menggunakan pendekatan Exploratory Data Analysis (EDA).
+Proyek ini bertujuan untuk menganalisis faktor-faktor yang mempengaruhi performa akademik siswa menggunakan pendekatan Exploratory Data Analysis (EDA) serta mengubah hasil analisis menjadi visualisasi yang lebih komunikatif melalui proses Visual Makeover.
 
-Dataset terdiri dari 10.000 data siswa yang disediakan oleh klien EdTech dan mencakup berbagai variabel seperti jam belajar, nilai sebelumnya, aktivitas ekstrakurikuler, jam tidur, serta jumlah latihan soal yang dikerjakan.
+Dataset yang digunakan berasal dari perusahaan EdTech dan berisi 10.000 data siswa dengan berbagai faktor yang diduga mempengaruhi performa akademik, seperti jam belajar, nilai sebelumnya, jam tidur, aktivitas ekstrakurikuler, dan jumlah latihan soal.
 
-Melalui analisis ini, diharapkan dapat diperoleh insight yang membantu institusi pendidikan dalam merancang strategi pembelajaran dan intervensi akademik yang lebih efektif.
+Melalui analisis ini, perusahaan dapat memahami faktor-faktor utama yang mempengaruhi performa siswa serta merancang strategi intervensi pembelajaran yang lebih efektif dan berbasis data.
 
 ---
 
-## Business Problem
+## Tujuan Analisis
 
-Perusahaan EdTech ingin memahami faktor utama yang mempengaruhi performa akademik siswa agar dapat:
-
-* Mengidentifikasi siswa yang berisiko memiliki performa rendah.
-* Menentukan faktor yang paling berpengaruh terhadap hasil belajar.
-* Menyusun program intervensi yang lebih tepat sasaran.
-* Mendukung pengambilan keputusan berbasis data dalam pengembangan produk pembelajaran.
+* Mengidentifikasi faktor utama yang mempengaruhi Performance Index siswa.
+* Mengetahui hubungan antar variabel akademik dan non-akademik.
+* Menemukan kelompok siswa yang membutuhkan intervensi pembelajaran.
+* Mengubah hasil analisis menjadi visualisasi yang lebih mudah dipahami oleh stakeholder non-teknis.
+* Memberikan rekomendasi bisnis untuk platform EdTech.
 
 ---
 
@@ -29,14 +28,14 @@ Dataset terdiri dari 10.000 data siswa dengan variabel:
 | -------------------------------- | ----------------------------- |
 | Hours Studied                    | Jam belajar siswa             |
 | Previous Scores                  | Nilai akademik sebelumnya     |
+| Sleep Hours                      | Jam tidur siswa               |
 | Extracurricular Activities       | Keikutsertaan ekstrakurikuler |
-| Sleep Hours                      | Jam tidur per hari            |
 | Sample Question Papers Practiced | Jumlah latihan soal           |
-| Performance Index                | Nilai performa siswa          |
+| Performance Index                | Indeks performa siswa         |
 
 ---
 
-## Tools & Technologies
+## Tools yang Digunakan
 
 * Python
 * Pandas
@@ -47,150 +46,195 @@ Dataset terdiri dari 10.000 data siswa dengan variabel:
 
 ---
 
-## Metodologi Analisis
+# Tahap 1 — Exploratory Data Analysis (EDA)
 
-### 1. Data Understanding
+## Statistical Profiling
 
-Memahami struktur dataset, tipe data, dan distribusi masing-masing variabel.
+Analisis statistik menunjukkan bahwa:
 
-### 2. Statistical Profiling
-
-Menggunakan statistik deskriptif untuk menganalisis:
-
-* Mean
-* Median
-* Standar Deviasi
-* Minimum
-* Maximum
-
-### 3. Exploratory Data Analysis (EDA)
-
-Analisis dilakukan menggunakan:
-
-* Correlation Matrix
-* Scatter Plot
-* Boxplot
-* Distribution Analysis
-
-### 4. Insight Generation
-
-Mengidentifikasi hubungan antar variabel dan faktor yang paling berpengaruh terhadap Performance Index.
+* Rata-rata Performance Index berada pada angka 55.
+* Terdapat variasi performa yang cukup besar antar siswa.
+* Previous Scores memiliki variasi yang tinggi dan menjadi kandidat faktor utama yang mempengaruhi performa.
+* Jam belajar siswa relatif seragam dengan rata-rata sekitar 5 jam per hari.
 
 ---
 
-## Hasil Analisis
+## Correlation Analysis
 
-### 1. Previous Scores Menjadi Faktor Terkuat
+Analisis korelasi menunjukkan bahwa:
 
-Analisis korelasi menunjukkan bahwa Previous Scores memiliki korelasi sebesar **0.92** terhadap Performance Index.
+| Variabel                         | Korelasi terhadap Performance Index |
+| -------------------------------- | ----------------------------------- |
+| Previous Scores                  | 0.92                                |
+| Hours Studied                    | Lebih rendah                        |
+| Sleep Hours                      | Lebih rendah                        |
+| Sample Question Papers Practiced | Lebih rendah                        |
+| Extracurricular Activities       | Sangat rendah                       |
 
 ### Insight
 
-Siswa dengan nilai akademik sebelumnya yang tinggi cenderung mempertahankan performa akademik yang baik.
+Previous Scores memiliki korelasi sangat kuat terhadap Performance Index (r = 0.92).
 
-Temuan ini menunjukkan bahwa kemampuan dasar akademik memiliki pengaruh yang sangat besar terhadap performa saat ini.
+Hal ini menunjukkan bahwa kemampuan akademik sebelumnya menjadi faktor dominan yang menentukan performa siswa saat ini.
 
 ---
 
-### 2. Jam Belajar Tidak Selalu Menentukan Hasil
+## Previous Scores vs Performance Index
 
-Visualisasi hubungan antara Hours Studied dan Performance Index menunjukkan tren positif, tetapi dengan penyebaran data yang cukup lebar.
+Visualisasi menunjukkan hubungan linear positif yang sangat kuat antara nilai sebelumnya dan performa siswa.
 
 ### Insight
 
-Tidak semua siswa yang belajar lebih lama memperoleh hasil yang lebih baik.
+Siswa dengan nilai akademik awal yang tinggi cenderung mempertahankan performa tinggi pada periode berikutnya.
 
-Hal ini mengindikasikan bahwa kualitas belajar kemungkinan lebih berpengaruh dibanding kuantitas belajar semata.
+Sebaliknya, siswa dengan nilai awal rendah berisiko tetap tertinggal apabila tidak diberikan intervensi khusus.
 
 ---
 
-### 3. Aktivitas Ekstrakurikuler Tidak Memberikan Perbedaan Signifikan
+## Hours Studied vs Performance Index
 
-Perbandingan Performance Index antara siswa yang mengikuti ekstrakurikuler dan yang tidak menunjukkan distribusi yang relatif mirip.
+Meskipun terdapat hubungan positif antara jam belajar dan performa siswa, penyebaran data menunjukkan bahwa peningkatan jam belajar tidak selalu menghasilkan peningkatan performa yang sebanding.
 
 ### Insight
 
-Keikutsertaan dalam ekstrakurikuler bukan faktor utama yang menentukan performa akademik siswa.
+Kuantitas belajar bukan satu-satunya faktor yang menentukan keberhasilan siswa. Kualitas belajar kemungkinan memiliki peran yang lebih penting.
 
 ---
 
-### 4. Sleep Hours dan Practice Papers Sebagai Faktor Pendukung
+## Extracurricular Activities Analysis
 
-Jam tidur dan jumlah latihan soal menunjukkan hubungan positif terhadap Performance Index, meskipun tidak sekuat Previous Scores.
+Perbandingan siswa yang mengikuti ekstrakurikuler dan yang tidak mengikuti menunjukkan perbedaan rata-rata performa yang relatif kecil.
 
 ### Insight
 
-Pola hidup yang baik dan latihan yang konsisten tetap berkontribusi terhadap peningkatan performa siswa.
+Keikutsertaan ekstrakurikuler tidak secara langsung meningkatkan performa akademik, tetapi dapat menjadi indikator kemampuan manajemen waktu dan motivasi belajar yang lebih baik.
 
 ---
 
-## Business Insight
+# Tahap 2 — Visual Makeover
 
-### Temuan Utama
-
-✅ Previous Scores merupakan prediktor terkuat performa siswa.
-
-✅ Jam belajar memiliki pengaruh positif namun tidak dominan.
-
-✅ Aktivitas ekstrakurikuler tidak menunjukkan dampak signifikan terhadap performa akademik.
-
-✅ Faktor pendukung seperti tidur yang cukup dan latihan soal tetap berkontribusi terhadap hasil belajar.
+Setelah proses EDA selesai, dilakukan redesign visualisasi untuk meningkatkan efektivitas komunikasi insight kepada stakeholder non-teknis.
 
 ---
 
-## Rekomendasi
+## Visualisasi 1 — Faktor Dominan Penentu Performa Siswa
 
-### Untuk Institusi Pendidikan
+### Sebelum
 
-* Fokus pada siswa dengan nilai awal rendah sebagai target intervensi utama.
-* Mengembangkan program remedial berbasis kemampuan dasar akademik.
-* Tidak hanya meningkatkan durasi belajar, tetapi juga kualitas pembelajaran.
+* Menggunakan heatmap korelasi standar.
+* Banyak informasi yang tidak relevan dengan tujuan bisnis.
+* Sulit mengidentifikasi faktor terpenting.
 
-### Untuk Platform EdTech
+### Sesudah
 
-* Mengembangkan sistem rekomendasi belajar yang dipersonalisasi.
-* Memberikan materi tambahan bagi siswa dengan Previous Scores rendah.
-* Memanfaatkan data historis siswa untuk memprediksi performa akademik di masa depan.
+* Menggunakan horizontal bar chart.
+* Menyoroti Previous Scores dengan warna berbeda.
+* Fokus langsung pada faktor paling berpengaruh.
 
----
+### Insight
 
-## Kesimpulan
-
-Analisis menunjukkan bahwa Previous Scores merupakan faktor yang paling mempengaruhi Performance Index siswa dengan korelasi yang sangat kuat.
-
-Temuan ini mengindikasikan bahwa performa akademik cenderung bersifat konsisten dari waktu ke waktu. Oleh karena itu, strategi peningkatan hasil belajar sebaiknya difokuskan pada siswa dengan kemampuan dasar yang masih rendah melalui program intervensi yang lebih terarah dan personal.
+Nilai akademik sebelumnya menjadi faktor dominan yang mempengaruhi Performance Index siswa.
 
 ---
 
-## Visualisasi
+## Visualisasi 2 — Identifikasi Siswa yang Membutuhkan Intervensi
 
-### Correlation Matrix
+### Sebelum
 
-(Tambahkan gambar heatmap korelasi)
+* Hanya menampilkan garis regresi.
+* Tidak menunjukkan segmentasi siswa.
 
-### Previous Scores vs Performance Index
+### Sesudah
 
-(Tambahkan scatter plot)
+* Menampilkan scatter plot dengan segmentasi zona.
+* Mengidentifikasi kelompok siswa yang membutuhkan perhatian khusus.
 
-### Hours Studied vs Performance Index
+### Insight
 
-(Tambahkan scatter plot)
-
-### Extracurricular Activities Comparison
-
-(Tambahkan boxplot)
+Siswa dengan Previous Score rendah memiliki risiko lebih tinggi untuk tetap tertinggal apabila tidak diberikan intervensi yang sesuai.
 
 ---
 
-## Skill yang Ditunjukkan
+## Visualisasi 3 — Efektivitas Jam Belajar
+
+### Sebelum
+
+* Scatter plot dengan 10.000 titik.
+* Sulit membaca pola distribusi data.
+
+### Sesudah
+
+* Menggunakan boxplot berdasarkan kelompok jam belajar.
+* Menampilkan median performa secara jelas.
+* Menunjukkan area jam belajar optimal.
+
+### Insight
+
+Peningkatan performa siswa cenderung melandai setelah 6–8 jam belajar per hari.
+
+---
+
+# Business Insight
+
+## Temuan Utama
+
+### 1. Previous Score Menjadi Faktor Dominan
+
+Nilai akademik sebelumnya memiliki korelasi sangat tinggi terhadap performa siswa saat ini.
+
+### 2. Kesenjangan Akademik Berpotensi Membesar
+
+Siswa yang memiliki kemampuan awal rendah cenderung tetap tertinggal apabila mendapatkan perlakuan yang sama dengan siswa lain.
+
+### 3. Jam Belajar Memiliki Diminishing Return
+
+Belajar lebih lama tidak selalu menghasilkan performa yang lebih baik.
+
+---
+
+# Rekomendasi Bisnis
+
+### Adaptive Learning Path
+
+Membangun sistem pembelajaran adaptif yang secara khusus menargetkan siswa dengan Previous Score rendah.
+
+### Diagnostic Assessment
+
+Melakukan evaluasi awal untuk mengelompokkan siswa berdasarkan tingkat kesiapan belajar.
+
+### Personalized Learning
+
+Memberikan materi dan target belajar yang berbeda untuk setiap kelompok siswa.
+
+### Fokus pada Learning Quality
+
+Mengubah KPI pembelajaran dari "lama belajar" menjadi "kualitas sesi belajar", seperti:
+
+* Tingkat penyelesaian latihan
+* Akurasi jawaban
+* Konsistensi belajar
+
+---
+
+# Kesimpulan
+
+Analisis menunjukkan bahwa Previous Scores merupakan faktor paling berpengaruh terhadap Performance Index siswa. Selain itu, peningkatan jam belajar memiliki batas efektivitas tertentu sehingga kualitas belajar menjadi lebih penting dibandingkan durasi belajar semata.
+
+Melalui visualisasi yang lebih komunikatif dan insight-driven, hasil analisis dapat dipahami dengan lebih cepat oleh stakeholder sehingga mendukung pengambilan keputusan yang lebih tepat dalam pengembangan strategi pembelajaran pada platform EdTech.
+
+---
+
+# Skill yang Ditunjukkan
 
 * Exploratory Data Analysis (EDA)
-* Statistical Analysis
+* Statistical Profiling
 * Correlation Analysis
 * Data Visualization
+* Visual Storytelling
 * Business Insight Generation
-* Data Storytelling
-* Python for Data Analytics
+* Data Cleaning
+* Python Analytics
+* Decision Support Analysis
 
 ---
 
