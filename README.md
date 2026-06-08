@@ -120,13 +120,13 @@ Setelah proses EDA selesai, dilakukan redesign visualisasi untuk meningkatkan ef
 ## Visualisasi 1 — Faktor Dominan Penentu Performa Siswa
 
 ### Sebelum
-
+![heatmap](visualisasi/heatmap.png)
 * Menggunakan heatmap korelasi standar.
 * Banyak informasi yang tidak relevan dengan tujuan bisnis.
 * Sulit mengidentifikasi faktor terpenting.
 
 ### Sesudah
-
+![dominasi](visualisasi/dominasi_performance.png)
 * Menggunakan horizontal bar chart.
 * Menyoroti Previous Scores dengan warna berbeda.
 * Fokus langsung pada faktor paling berpengaruh.
@@ -140,12 +140,12 @@ Nilai akademik sebelumnya menjadi faktor dominan yang mempengaruhi Performance I
 ## Visualisasi 2 — Identifikasi Siswa yang Membutuhkan Intervensi
 
 ### Sebelum
-
+![intervensi](visualisasi/performance vs nilai.png)
 * Hanya menampilkan garis regresi.
 * Tidak menunjukkan segmentasi siswa.
 
 ### Sesudah
-
+![heatmap](visualisasi/score vs performance.png)
 * Menampilkan scatter plot dengan segmentasi zona.
 * Mengidentifikasi kelompok siswa yang membutuhkan perhatian khusus.
 
@@ -158,12 +158,12 @@ Siswa dengan Previous Score rendah memiliki risiko lebih tinggi untuk tetap tert
 ## Visualisasi 3 — Efektivitas Jam Belajar
 
 ### Sebelum
-
+![heatmap](visualisasi/jam & performance.png)
 * Scatter plot dengan 10.000 titik.
 * Sulit membaca pola distribusi data.
 
 ### Sesudah
-
+![heatmap](visualisasi/hours vs performance.png)
 * Menggunakan boxplot berdasarkan kelompok jam belajar.
 * Menampilkan median performa secara jelas.
 * Menunjukkan area jam belajar optimal.
