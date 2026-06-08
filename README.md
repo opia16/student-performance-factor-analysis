@@ -140,12 +140,12 @@ Nilai akademik sebelumnya menjadi faktor dominan yang mempengaruhi Performance I
 ## Visualisasi 2 — Identifikasi Siswa yang Membutuhkan Intervensi
 
 ### Sebelum
-![intervensi](visualisasi/performance vs nilai.png)
+![intervensi](visualisasi/performance-nilai.png)
 * Hanya menampilkan garis regresi.
 * Tidak menunjukkan segmentasi siswa.
 
 ### Sesudah
-![heatmap](visualisasi/score vs performance.png)
+![heatmap](visualisasi/score-performance.png)
 * Menampilkan scatter plot dengan segmentasi zona.
 * Mengidentifikasi kelompok siswa yang membutuhkan perhatian khusus.
 
@@ -158,12 +158,12 @@ Siswa dengan Previous Score rendah memiliki risiko lebih tinggi untuk tetap tert
 ## Visualisasi 3 — Efektivitas Jam Belajar
 
 ### Sebelum
-![heatmap](visualisasi/jam & performance.png)
+![heatmap](visualisasi/jam-performance.png)
 * Scatter plot dengan 10.000 titik.
 * Sulit membaca pola distribusi data.
 
 ### Sesudah
-![heatmap](visualisasi/hours vs performance.png)
+![heatmap](visualisasi/hours-performance.png)
 * Menggunakan boxplot berdasarkan kelompok jam belajar.
 * Menampilkan median performa secara jelas.
 * Menunjukkan area jam belajar optimal.
@@ -240,6 +240,9 @@ Melalui visualisasi yang lebih komunikatif dan insight-driven, hasil analisis da
 
 ## Author
 
-**Shofia Nabila**
-Universitas Pendidikan Indonesia
-Data Analyst Portfolio
+Shofia Nabila
+
+Studi Independen Data Analyst | Vinix7
+
+Sistem Informasi Kelautan | Universitas Pendidikan Indonesia
+
